@@ -2,8 +2,6 @@
 """
 Pascal's Triangle
 """
-
-
 def pascal_triangle(n):
     """
          returns a list of lists of
@@ -21,4 +19,3 @@ def pascal_triangle(n):
         row.append(1)
         triangle.append(row)
     return triangle
-    
