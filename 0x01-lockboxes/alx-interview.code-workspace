@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "alx-interview",
+			"path": ".."
+		},
+		{
+			"name": "alx-backend-javascript",
+			"path": "../../../alx-backend-javascript/alx-backend-javascript"
+		}
+	],
+	"settings": {}
+}
