@@ -21,4 +21,3 @@ def minOperations(n: int) -> int:
             n /= i
         i += 1
     return operations
-
