@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
+"""sumary_line
+
+Keyword arguments:
+argument -- description
+Return: return_description
+"""
 
 
 def makeChange(coins, total):
