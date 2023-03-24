@@ -14,16 +14,16 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    
-    coins.sort(reverse=True) # Sort coins in descending order
+
+    coins.sort(reverse=True)  # Sort coins in descending order
     num_coins = 0
-    
+
     for coin in coins:
         while total >= coin:
             total -= coin
             num_coins += 1
-    
-    if total > 0: # Check if total amount can be made
+
+    if total > 0:  # Check if total amount can be made
         return -1
-    
+
     return num_coins
