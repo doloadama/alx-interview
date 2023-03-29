@@ -3,7 +3,7 @@
 
 
 def island_perimeter(grid):
-    # initialize land and adj variables
+    """initialize land and adj variables"""
     land = 0
     adj = 0
     # loop over the rows of the grid
