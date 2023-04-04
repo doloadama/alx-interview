@@ -6,9 +6,12 @@
 
 def isWinner(x, nums):
     """
-    Determines the winner of x rounds of the prime game, where n may be different
-    for each round. Assuming Maria always goes first and both players play optimally,
-    returns the name of the player that won the most rounds. If the winner cannot be
+    Determines the winner of x rounds of the prime game,
+    where n may be different
+    for each round. Assuming Maria always goes first and
+    both players play optimally,
+    returns the name of the player that won the most rounds.
+    If the winner cannot be
     determined, returns None.
 
     Args:
@@ -16,7 +19,8 @@ def isWinner(x, nums):
         nums (list): An array of n for each round.
 
     Returns:
-        str or None: The name of the player that won the most rounds, or None if the
+        str or None: The name of the player that won the most rounds,
+        or None if the
             winner cannot be determined.
     """
     # Initialize a variable to keep track of the number of rounds each player wins
