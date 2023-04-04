@@ -3,6 +3,7 @@
 0-Prime Game
 """
 
+
 def isWinner(x, nums):
     """
     Determines the winner of x rounds of the prime game, where n may be different
