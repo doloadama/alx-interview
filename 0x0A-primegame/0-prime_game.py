@@ -23,7 +23,8 @@ def isWinner(x, nums):
         or None if the
             winner cannot be determined.
     """
-    # Initialize a variable to keep track of the number of rounds each player wins
+    # Initialize a variable to keep track of the number of rounds each
+    # player wins
     maria_wins = 0
     ben_wins = 0
 
@@ -66,7 +67,8 @@ def isWinner(x, nums):
         else:
             maria_wins += 1
 
-    # Determine the winner of the game based on the number of rounds each player won
+    # Determine the winner of the game based on the number
+    # of rounds each player won
     if maria_wins > ben_wins:
         return "Maria"
     elif ben_wins > maria_wins:
