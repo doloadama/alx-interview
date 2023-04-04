@@ -1,77 +1,28 @@
 #!/usr/bin/python3
-"""
-0-Prime Game
+"""Prime game module.
 """
 
 
 def isWinner(x, nums):
+    """Determines the winner of a prime game session with `x` rounds.
     """
-    Determines the winner of x rounds of the prime game,
-    where n may be different
-    for each round. Assuming Maria always goes first and
-    both players play optimally,
-    returns the name of the player that won the most rounds.
-    If the winner cannot be
-    determined, returns None.
-
-    Args:
-        x (int): The number of rounds to play.
-        nums (list): An array of n for each round.
-
-    Returns:
-        str or None: The name of the player that won the most rounds,
-        or None if the
-            winner cannot be determined.
-    """
-    # Initialize a variable to keep track of the number of rounds each
-    # player wins
-    maria_wins = 0
-    ben_wins = 0
-
-    # Iterate over each round
-    for i in range(x):
-        # Get the value of n for this round
-        n = nums[i]
-
-        # Create a list of all integers from 2 to n, inclusive
-        num_list = list(range(2, n+1))
-
-        # Initialize a variable to keep track of the current player
-        current_player = "Maria"
-
-        # Keep looping until there are no more prime numbers in the list
-        while True:
-            # Find the smallest prime number in the list
-            prime = None
-            for num in num_list:
-                if all(num % i != 0 for i in range(2, int(num**0.5)+1)):
-                    prime = num
-                    break
-
-            # If no prime number was found, exit the loop
-            if prime is None:
-                break
-
-            # Remove the prime number and its multiples from the list
-            num_list = [num for num in num_list if num % prime != 0]
-
-            # Switch to the other player
-            if current_player == "Maria":
-                current_player = "Ben"
-            else:
-                current_player = "Maria"
-
-        # Update the number of rounds each player wins
-        if current_player == "Maria":
-            ben_wins += 1
-        else:
-            maria_wins += 1
-
-    # Determine the winner of the game based on the number
-    # of rounds each player won
-    if maria_wins > ben_wins:
-        return "Maria"
-    elif ben_wins > maria_wins:
-        return "Ben"
-    else:
+    if x < 1 or not nums:
         return None
+    marias_wins, bens_wins = 0, 0
+    # generate primes with a limit of the maximum number in nums
+    n = max(nums)
+    primes = [True for _ in range(1, n + 1, 1)]
+    primes[0] = False
+    for i, is_prime in enumerate(primes, 1):
+        if i == 1 or not is_prime:
+            continue
+        for j in range(i + i, n + 1, i):
+            primes[j - 1] = False
+    # filter the number of primes less than n in nums for each round
+    for _, n in zip(range(x), nums):
+        primes_count = len(list(filter(lambda x: x, primes[0: n])))
+        bens_wins += primes_count % 2 == 0
+        marias_wins += primes_count % 2 == 1
+    if marias_wins == bens_wins:
+        return None
+    return 'Maria' if marias_wins > bens_wins else 'Ben'
