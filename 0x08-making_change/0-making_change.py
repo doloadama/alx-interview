@@ -1,34 +1,28 @@
 #!/usr/bin/python3
-"""sumary_line
-
-Keyword arguments:
-argument -- description
-Return: return_description
-"""
+# 0_making_change
 
 
 def makeChange(coins, total):
-    """_summary_
-
-    Args:
-        coins (_type_): _description_
-        total (_type_): _description_
-
-    Returns:
-        _type_: _description_
+    """
+    coins is a list of coins to change
+    total is the amount you need to reach using the
+    fewest number of coins
     """
     if total <= 0:
         return 0
+    
+    #Initialization of an array to store the minimum of coins
+    store = [float('inf')] * (total + 1)
 
-    coins.sort(reverse=True)  # Sort coins in descending order
-    num_coins = 0
+    #Base
+    store [0] = 0
 
-    for coin in coins:
-        while total >= coin:
-            total -= coin
-            num_coins += 1
+    for i in range(1, total + 1):
+        for coin in coins:
+            if coin <= i:
+                store[i] = min(store[i], 1+ store[i - coin])
 
-    if total > 0:  # Check if total amount can be made
+    if store[total] == float('inf'):
         return -1
-
-    return num_coins
+    
+    return store[total]
