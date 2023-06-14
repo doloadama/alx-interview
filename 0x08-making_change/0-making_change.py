@@ -19,7 +19,7 @@ def makeChange(coins, total):
             # Choose the minimum between the current minimum
             #  and using the current coin
             minCoins[amount] = min(minCoins[amount],
-                                    minCoins[amount - coin] + 1)
+                                   minCoins[amount - coin] + 1)
 
     # Check if the total amount can be met by any number of coins
     if minCoins[total] == float('inf'):
