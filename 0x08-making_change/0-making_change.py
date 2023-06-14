@@ -3,6 +3,7 @@
 0_making_change
 """
 
+
 def makeChange(coins, total):
     """
     Make change of coins in the wallet
