@@ -5,18 +5,21 @@
 
 
 def makeChange(coins, total):
-    """
-    Make change of coins in the wallet
-    """
-    if total <= 0:
-        return 0
+    # Initialize an array to store the minimum number of coins required for each amount
+    minCoins = [float('inf')] * (total + 1)
 
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
+    # Base case: 0 coins needed for total amount of 0
+    minCoins[0] = 0
 
-    for i in range(1, total + 1):
-        for coin in coins:
-            if coin <= i:
-                dp[i] = min(dp[i], dp[i - coin] + 1)
+    # Iterate through each coin denomination
+    for coin in coins:
+        # Update the minimum number of coins for each amount
+        for amount in range(coin, total + 1):
+            # Choose the minimum between the current minimum and using the current coin
+            minCoins[amount] = min(minCoins[amount], minCoins[amount - coin] + 1)
 
-    return dp[total] if dp[total] != float('inf') else -1
+    # Check if the total amount can be met by any number of coins
+    if minCoins[total] == float('inf'):
+        return -1
+
+    return minCoins[total]
