@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Island perimeter
+"""
 
 
 def island_perimeter(grid):
