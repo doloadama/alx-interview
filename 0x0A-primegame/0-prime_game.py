@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-prime game
+prime game test
 """
 
 
