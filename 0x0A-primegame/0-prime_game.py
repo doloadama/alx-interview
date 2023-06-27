@@ -3,9 +3,14 @@
 
 def isWinner(x, nums):
     """
-    Maria and Ben are playing a game. Given a set of consecutive integers starting from 1 up to and including n, they take turns choosing a prime number from the set and removing that number and its multiples from the set. The player that cannot make a move loses the game.
+    Maria and Ben are playing a game. Given a set of consecutive integers starting
+    from 1 up to and including n, they take turns choosing a prime number from the
+    set and removing that number and its multiples from the set. The player that 
+    cannot make a move loses the game.
 
-    They play x rounds of the game, where n may be different for each round. Assuming Maria always goes first and both players play optimally, determine who the winner of each game is.
+    They play x rounds of the game, where n may be different for each round. 
+    Assuming Maria always goes first and both players play optimally,
+    determine who the winner of each game is.
 
     Prototype: def isWinner(x, nums)
     where x is the number of rounds and nums is an array of n
@@ -47,6 +52,7 @@ def isWinner(x, nums):
         else:
             ben_wins += 1
 
+    
     return "Maria" if maria_wins > ben_wins else "Ben"
 
 if __name__ == "__main__":
