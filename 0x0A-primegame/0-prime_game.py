@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-"""
-prime game
-"""
-
 
 def is_prime(n):
     """Check if a number is prime."""
@@ -13,7 +9,6 @@ def is_prime(n):
             return False
     return True
 
-
 def isWinner(x, nums):
     """Determine the winner of each game."""
     if not nums:
@@ -22,7 +17,7 @@ def isWinner(x, nums):
     def count_primes(n):
         """Count the number of primes in a given range."""
         count = 0
-        for i in range(1, n + 1):
+        for i in range(2, n + 1):
             if is_prime(i):
                 count += 1
         return count
@@ -33,7 +28,16 @@ def isWinner(x, nums):
     for n in nums:
         prime_count = count_primes(n)
 
-        if prime_count % 2 == 0:
+        # Alternate turns between Maria and Ben
+        current_player = "Maria"
+        while prime_count > 0:
+            if current_player == "Maria":
+                current_player = "Ben"
+                prime_count -= 1
+            else:
+                current_player = "Maria"
+
+        if current_player == "Maria":
             ben_wins += 1
         else:
             maria_wins += 1
