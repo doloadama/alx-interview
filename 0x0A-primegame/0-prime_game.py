@@ -1,4 +1,4 @@
-#!usr/binp/python3
+#!usr/bin/python3
 """
 prime game
 """
