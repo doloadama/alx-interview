@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def is_prime(n):
     """Check if a number is prime."""
     if n < 2:
@@ -8,6 +9,7 @@ def is_prime(n):
         if n % i == 0:
             return False
     return True
+
 
 def isWinner(x, nums):
     """Determine the winner of each game."""
