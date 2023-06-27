@@ -32,9 +32,20 @@ def isWinner(x, nums):
         current_player = "Maria"
         while prime_count > 0:
             if current_player == "Maria":
+                prime = 2
+                while prime <= n:
+                    if is_prime(prime):
+                        prime_count -= 1
+                        break
+                    prime += 1
                 current_player = "Ben"
-                prime_count -= 1
             else:
+                prime = 2
+                while prime <= n:
+                    if is_prime(prime):
+                        prime_count -= 1
+                        break
+                    prime += 1
                 current_player = "Maria"
 
         if current_player == "Maria":
