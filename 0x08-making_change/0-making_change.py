@@ -3,22 +3,21 @@
 
 
 def makeChange(coins, total):
-    """
-    Making changes module
-    """
+    """making changes module"""
     if total <= 0:
         return 0
 
-    # Initialize an array to store the minimum number of coins needed for each value
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
+    coins.sort(reverse=True)  # Sort coins in descending order
 
-    # Iterate through each coin value and update the dp array
+    coin_count = 0
+    current_total = 0
+
     for coin in coins:
-        for value in range(coin, total + 1):
-            dp[value] = min(dp[value], dp[value - coin] + 1)
+        while current_total + coin <= total:
+            current_total += coin
+            coin_count += 1
 
-    if dp[total] == float('inf'):
-        return -1
+        if current_total == total:
+            return coin_count
 
-    return dp[total]
+    return -1
