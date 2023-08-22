@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-#Making change
+"""
+Change making module
+"""
+
 
 def makeChange(coins, total):
     if total <= 0:
@@ -20,3 +23,4 @@ def makeChange(coins, total):
         return -1
 
     return dp[total]
+             
