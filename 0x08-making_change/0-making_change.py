@@ -12,6 +12,7 @@ def makeChange(coins, total):
     The fewest number of coins needed to meet total.
     If total is 0 or less, returns 0.
     If total cannot be met by any number of coins you have, returns -1.
+  ddd
   """
 
   if total <= 0:
