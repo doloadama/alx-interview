@@ -1,29 +1,23 @@
 #!/usr/bin/python3
 
-
 def makeChange(coins, total):
-  """
-  Returns the fewest number of coins needed to meet a given amount total.
+    if total <= 0:
+        return 0
 
-  Args:
-    coins: A list of the values of the coins in your possession.
-    total: The amount of money you need to make change for.
+    # Initialize an array to store the minimum number of coins needed for each value
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
 
-  Returns:
-    The fewest number of coins needed to meet total.
-    If total is 0 or less, returns 0.
-    If total cannot be met by any number of coins you have, returns -1.
-  ddd
-  """
+    # Iterate through each coin value and update the dp array
+    for coin in coins:
+        for value in range(coin, total + 1):
+            dp[value] = min(dp[value], dp[value - coin] + 1)
 
-  if total <= 0:
-    return 0
+    if dp[total] == float('inf'):
+        return -1
 
-  dp = [float("inf") for _ in range(total + 1)]
-  dp[0] = 0
+    return dp[total]
 
-  for coin in coins:
-    for i in range(coin, total + 1):
-      dp[i] = min(dp[i], dp[i - coin] + 1)
-
-  return dp[total] if dp[total] != float("inf") else -1
+# Test cases
+print(makeChange([1, 2, 25], 37))  # Output: 7
+print(makeChange([1256, 54, 48, 16, 102], 1453))  # Output: -1
