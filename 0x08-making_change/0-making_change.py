@@ -1,26 +1,25 @@
 #!/usr/bin/python3
-"""
-Change making module
-"""
+"""Making change"""
 
 
 def makeChange(coins, total):
-		"""
-    Makes changes
     """
-	  if total <= 0:
+    Making changes module
+    """
+    if total <= 0:
         return 0
-    sot = total
-    coins_compt = 0
-    coin_index = 0
-    sorted_coins = sorted(coins, reverse=True)
-    n = len(coins)
-    while sot > 0:
-        if coin_index >= n:
-            return -1
-        if sot - sorted_coins[coin_index] >= 0:
-            sot -= sorted_coins[coin_index]
-            coins_compt += 1
-        else:
-            coin_index += 1
-    return coins_compt
+
+    # Initialize an array to store the minimum number of coins needed for each value
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
+
+    # Iterate through each coin value and update the dp array
+    for coin in coins:
+        for value in range(coin, total + 1):
+            dp[value] = min(dp[value], dp[value - coin] + 1)
+
+    if dp[total] == float('inf'):
+        return -1
+
+    return dp[total]
+
